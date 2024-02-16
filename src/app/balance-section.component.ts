@@ -31,6 +31,5 @@ export class BalanceSectionComponent {
 
   readonly account = computedAsync(
     () => this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
-    { requireSync: true },
   );
 }
