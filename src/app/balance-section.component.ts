@@ -30,8 +30,8 @@ export class BalanceSectionComponent {
   private readonly _walletStore = inject(WalletStore);
   private readonly _publicKey = toSignal(this._walletStore.publicKey$);
 
-  readonly account = computedAsync(() =>
-    this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
+  readonly account = computedAsync(
+    () => this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
   );
 }
     
