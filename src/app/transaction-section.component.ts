@@ -15,9 +15,6 @@ import { CommonModule } from '@angular/common';
           <div *ngFor="let acc of transaction()!">
             <div class="flex items-center">
               <p class="text-xl">{{ formatDate(acc.timestamp) }}</p>
-              <!--  <p class="text-xl">{{ acc.actions.info.sender }}</p>
-              <p class="text-xl">{{ acc.actions.info.receiver }}</p>
-              <p class="text-xl">{{ acc.actions.info.amount }}</p> -->
             </div>
           </div>
         </div>

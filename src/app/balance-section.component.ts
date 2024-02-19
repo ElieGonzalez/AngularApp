@@ -34,3 +34,4 @@ export class BalanceSectionComponent {
     this._shyftApiService.getAccount(this._publicKey()?.toBase58()),
   );
 }
+    
