@@ -5,12 +5,11 @@ import { appRoutes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideWalletAdapter } from '@heavy-duty/wallet-adapter';
 
-
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(appRoutes), 
+    provideRouter(appRoutes),
     provideAnimationsAsync(),
     provideWalletAdapter(),
-    provideHttpClient()
+    provideHttpClient(),
   ],
 };

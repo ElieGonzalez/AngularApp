@@ -6,8 +6,23 @@ import { map, of } from 'rxjs';
 export class ShyftApiService {
   private readonly _httpClient = inject(HttpClient);
   private readonly _header = { 'x-api-key': 'NxdpccLNega3GypV' };
-  //private readonly _mint ='EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'; // USDC Token
-  //private readonly _mint ='7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs'; // USDC Token
+
+  getBalance(publicKey: string | undefined | null) {
+    if (!publicKey) {
+      return of(null);
+    }
+
+    const url = new URL('https://api.shyft.to/sol/v1/wallet/balance');
+
+    url.searchParams.set('network', 'mainnet-beta');
+    url.searchParams.set('wallet', publicKey);
+
+    return this._httpClient
+      .get<{
+        result: { balance: number };
+      }>(url.toString(), { headers: this._header })
+      .pipe(map((response) => response.result));
+  }
 
   getAccount(publicKey: string | undefined | null) {
     if (!publicKey) {
@@ -18,7 +33,6 @@ export class ShyftApiService {
 
     url.searchParams.set('network', 'mainnet-beta');
     url.searchParams.set('wallet', publicKey);
-    //url.searchParams.set('token', this._mint)
 
     return this._httpClient
       .get<{
