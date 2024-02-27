@@ -62,7 +62,7 @@ export class TransferModalComponent {
           senderAddress: publicKey.toBase58(),
           receiverAddress: new PublicKey(payload.receiverAddress).toBase58(),
           mintAddress: new PublicKey(config.mint).toBase58(),
-          amount: payload.amount,
+          amount: payload.amount * 10**9,
           fundReceiver: true,
           memo: payload.memo,
         }),
